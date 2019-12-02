@@ -1,3 +1,4 @@
+//adapter 
 export default class Song {
   constructor(data) {
     this.title = data.trackName || data.title;
@@ -11,12 +12,14 @@ export default class Song {
   }
 
   get Template() {
+    //TODO
     return `
 
         `;
   }
 
   get playlistTemplate() {
+    //TODO
     return `
 
         `;

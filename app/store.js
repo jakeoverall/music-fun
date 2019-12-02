@@ -1,15 +1,15 @@
 import Song from "./Models/Song.js";
 
 let _state = {
-  /** Collection of Songs from search Results
+  /** ITUNES - Collection of Songs from search Results
    * @type {Song[]} */
   songs: [],
-  /**Collection of songs from the users Playlist
+  /** SANDBOX - Collection of songs from the users Playlist
    * @type {Song[]} */
   playlist: []
 };
 
-/** Collection of listeners to be called based on keyed state changes
+/** REVIEW OBSERVER PATTERN Collection of listeners to be called based on keyed state changes
  * @type {{[x:string]: function[]}}
  */
 let _listeners = {
