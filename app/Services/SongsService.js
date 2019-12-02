@@ -59,7 +59,7 @@ class SongsService {
       .then(res => {
         //Immutable Way
         let newSong = new Song(res.data.data);
-        let playlist = [newSong, ...store.State.playlist];
+        let playlist = [...store.State.playlist, newSong];
         store.commit("playlist", playlist);
       })
       .catch(e => {
@@ -73,7 +73,11 @@ class SongsService {
    * @param {string} id
    */
   removeSong(id) {
-    //TODO Send the id to be deleted from the server then update the store
+    _sandBox.delete(id).then(res => {
+      let i = store.State.playlist.findIndex(s => s._id == id);
+      store.State.playlist.splice(i, 1);
+      store.commit("playlist", store.State.playlist);
+    });
   }
 }
 

@@ -9,6 +9,8 @@ let _state = {
   playlist: []
 };
 
+let _history = [_state];
+
 /** REVIEW OBSERVER PATTERN Collection of listeners to be called based on keyed state changes
  * @type {{[x:string]: function[]}}
  */

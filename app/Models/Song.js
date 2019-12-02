@@ -38,7 +38,7 @@ export default class Song {
         <div>
           ${this.title}
           <button onclick="app.songsController.playSong('${this._id}', true)">Preview</button>
-          <button onclick="app.songsController.removeSong('${this._id}')">Add to playlist</button>
+          <button onclick="app.songsController.removeSong('${this._id}')">Remove from playlist</button>
         </div>
         `;
   }
