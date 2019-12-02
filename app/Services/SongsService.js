@@ -4,7 +4,8 @@ import store from "../store.js";
 // @ts-ignore
 let _sandBox = axios.create({
   //TODO Change YOURNAME to your actual name
-  baseURL: "//bcw-sandbox.herokuapp.com/api/YOURNAME/songs"
+  baseURL: "//bcw-sandbox.herokuapp.com/api/JAKEOVERALL/songs",
+  timeout: 8000
 });
 
 class SongsService {
@@ -38,9 +39,8 @@ class SongsService {
     _sandBox
       .get()
       .then(res => {
-        //TODO What are you going to do with this result
-        let results = res.results.map(rawData => new Song(rawData));
-        // store.commit("songssa", results)
+        let results = res.data.data.map(rawData => new Song(rawData));
+        store.commit("playlist", results);
       })
       .catch(error => {
         throw new Error(error);
@@ -53,8 +53,18 @@ class SongsService {
    * @param {string} id
    */
   addSong(id) {
-    //TODO you only have an id, you will need to find it in the store before you can post it
-    //TODO After posting it what should you do?
+    let song = store.State.songs.find(s => s._id == id);
+    _sandBox
+      .post("", song)
+      .then(res => {
+        //Immutable Way
+        let newSong = new Song(res.data.data);
+        let playlist = [newSong, ...store.State.playlist];
+        store.commit("playlist", playlist);
+      })
+      .catch(e => {
+        throw e;
+      });
   }
 
   /**

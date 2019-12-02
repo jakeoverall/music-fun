@@ -1,4 +1,4 @@
-//adapter 
+//DESIGN PATTERN adapter
 export default class Song {
   constructor(data) {
     this.title = data.trackName || data.title;
@@ -13,15 +13,33 @@ export default class Song {
 
   get Template() {
     //TODO
-    return `
+    return /*html*/ `
+    <div>
+      ${this.title}
+      <button onclick="app.songsController.playSong('${this._id}')">Preview</button>
+      <button onclick="app.songsController.addSong('${this._id}')">Add to playlist</button>
+    </div>
+  `;
+  }
 
+  get PreviewTemplate() {
+    //TODO make this
+    return /*html*/ ` 
+        <div>
+          <h4>${this.title}</h4>
+          <audio src="${this.preview}" controls autoplay></audio>
+        </div>
         `;
   }
 
-  get playlistTemplate() {
-    //TODO
-    return `
-
+  get PlaylistTemplate() {
+    //TODO make this too
+    return /*html*/`
+        <div>
+          ${this.title}
+          <button onclick="app.songsController.playSong('${this._id}', true)">Preview</button>
+          <button onclick="app.songsController.removeSong('${this._id}')">Add to playlist</button>
+        </div>
         `;
   }
 }
