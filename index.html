@@ -8,47 +8,54 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="assets/style.css" />
     <title>Music is Fun</title>
   </head>
 
-  <body class="container-fluid">
-    <header class="row">
-      <div class="col-12 bannerStyle">
-        <p>Music is Fun</p>
-      </div>
-      <div class="offset-8 col-4">
-        <form onsubmit="app.songsController.search(event)">
-          <input
-            type="text"
-            class="form-control"
-            name="query"
-            placeholder="Search For Music"
-          />
-          <button class="btn btn-success mt-1 form-control" type="submit">
-            Search
-          </button>
-        </form>
-      </div>
+  <body>
+    <header class="bg-dark text-light text-center p-3">
+      <h1>Music is Fun</h1>
     </header>
 
-    <main class="row">
-      <div class="col-12 col-lg-4">
-        <h3 class="text-center">Search Results</h3>
-        <div id="songs" class="col-12 m-0">
-          <!-- template to generate -->
+    <main class="container-fluid">
+      <section class="row">
+        <div class="col-12 col-lg-2 bg-white bg-lg-secondary">
+          <form onsubmit="app.songsController.search(event)">
+            <input
+              type="text"
+              class="form-control"
+              name="query"
+              placeholder="Search For Music"
+            />
+            <button class="btn btn-success mt-1 form-control" type="submit">
+              Search
+            </button>
+          </form>
+          <h3 class="text-center">Search Results</h3>
+          <div id="songs">
+            <!-- template to generate -->
+          </div>
         </div>
-      </div>
-      <div id="media-player" class="col-12 col-lg-4">
-        <!-- SONGPLAYER -->
-      </div>
-      <div class="col-12 col-lg-4">
-        <h3 class="text-center">Playlist</h3>
-        <div class="col-12 m-0" id="playlist">
-          loading...
-          <!-- template for playlist -->
+        <div
+          id="media-player"
+          class="col-12 col-lg-8 order-2 order-lg-1 bg-secondary bg-lg-light"
+        >
+          <!-- SONGPLAYER -->
         </div>
-      </div>
+        <div class="col-12 bg-primary col-lg-2 order-1 order-lg-2">
+          <h3 class="text-center">Playlist</h3>
+          <div id="playlist">
+            loading...
+            <!-- template for playlist -->
+          </div>
+        </div>
+      </section>
     </main>
 
     <script

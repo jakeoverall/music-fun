@@ -14,10 +14,14 @@ export default class Song {
   get Template() {
     //TODO
     return /*html*/ `
-    <div>
-      ${this.title}
-      <button onclick="app.songsController.playSong('${this._id}')">Preview</button>
-      <button onclick="app.songsController.addSong('${this._id}')">Add to playlist</button>
+    <div class="bg-white card song-card p-2 bg-light mb-2">
+      <div class="preview-img">
+        <img class="img-fluid card-img" onclick="app.songsController.playSong('${this._id}')" src="${this.albumArt}" alt="${this.album}"/>
+      </div>  
+        <button class="btn btn-primary add-button" onclick="app.songsController.addSong('${this._id}')">
+          <i class="fa fa-fw fa-plus-square"></i>
+        </button>
+      
     </div>
   `;
   }
@@ -25,7 +29,8 @@ export default class Song {
   get PreviewTemplate() {
     //TODO make this
     return /*html*/ ` 
-        <div>
+        <div class="card p-2 bg-light mb-2">
+          <img src="${this.albumArt}" alt="${this.album}"/>
           <h4>${this.title}</h4>
           <audio src="${this.preview}" controls autoplay></audio>
         </div>
@@ -34,8 +39,9 @@ export default class Song {
 
   get PlaylistTemplate() {
     //TODO make this too
-    return /*html*/`
-        <div>
+    return /*html*/ `
+        <div class="card p-2 bg-light mb-2">
+          <img src="${this.albumArt}" alt="${this.album}"/>
           ${this.title}
           <button onclick="app.songsController.playSong('${this._id}', true)">Preview</button>
           <button onclick="app.songsController.removeSong('${this._id}')">Remove from playlist</button>

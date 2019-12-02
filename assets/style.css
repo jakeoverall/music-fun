@@ -1,0 +1,51 @@
+.add-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.preview-img {
+  position: relative;
+}
+
+.preview-img::after {
+  content: "PLAY";
+  color: white;
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+@media screen and (max-width: 767px) {
+  #media-player {
+    position: fixed;
+    bottom: 0;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #media-player img {
+    height: 100px;
+    width: 100px;
+  }
+  #songs {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 50%;
+  }
+  #songs .song-card {
+    width: 40vw;
+    scroll-snap-align: center;
+  }
+}
